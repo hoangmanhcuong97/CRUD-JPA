@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<h3>Edit Crush</h3>
+<p>
+    <a th:href="@{/crushes}">
+        Back to crushes list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/crushes/update}" th:object="${updateForm}"
+          method="POST" novalidate="novalidate" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>Old</label>
+            <input type="text" th:field="*{old}"/>
+        </div>
+        <div>
+            <label>Address</label>
+            <input type="text" th:field="*{address}"/>
+        </div>
+        <div>
+            <label>Facebook</label>
+            <input type="text" th:field="*{facebook}"/>
+        </div>
+        <div>
+            <input type="hidden" th:field="*{img}">
+            <label>Image</label>
+            <img th:src="@{'/image/'+*{img}}" width="50px" height="50px" alt="No found picture">
+            <input type="file" name="newImage"/>
+        </div>
+        <input type="submit" value="Edit"/>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

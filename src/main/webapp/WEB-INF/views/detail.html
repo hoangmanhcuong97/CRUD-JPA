@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<h3>Information Crush</h3>
+<p>
+    <a th:href="@{/crushes}">
+        Back to crush list
+    </a>
+</p>
+   <table border="2px" width="50%">
+       <tr>
+           <th>Name</th>
+           <td th:text="${showInformation.getName()}"></td>
+       </tr>
+       <tr>
+           <th>Old</th>
+           <td th:text="${showInformation.getOld()}"></td>
+       </tr>
+       <tr>
+           <th>Address</th>
+           <td th:text="${showInformation.getAddress()}"></td>
+       </tr>
+       <tr>
+          <th>FaceBook</th>
+           <td th:text="${showInformation.getFacebook()}"></td>
+       </tr>
+       <tr>
+           <th>Image</th>
+           <td><img th:src="@{'/image/'+${showInformation.getImg()}}" width="50px" height="50px" alt="Not dowload"></td>
+       </tr>
+   </table>
+
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

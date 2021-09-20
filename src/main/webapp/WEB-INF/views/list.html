@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="utf-8">
+    <title>List Crush</title>
+</head>
+<h3>Crushes</h3>
+<body>
+<p align="center">
+    <a th:href="@{/crushes/create}">
+        Add new customer
+    </a>
+</p>
+<div style="size: 17px;color: red">
+    <div th:if="${message}">
+        <span th:text="${message}"></span>
+    </div>
+</div>
+<table id = "listCrush" >
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Old</th>
+        <th>Address</th>
+        <th>Facebook</th>
+        <th>Image</th>
+        <th>Detail</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody align="center">
+    <tr th:each="cr : ${listCrush}">
+        <td th:text="${cr.id}"></td>
+        <td th:text="${cr.name}"></td>
+        <td th:text="${cr.old}"></td>
+        <td th:text="${cr.address}"></td>
+        <td th:text="${cr.facebook}"></td>
+        <td>
+            <img th:src="@{'/image/'+${cr.img}}" width="100" alt="Not Upload">
+        </td>
+        <td><a th:href="@{/crushes/{id}/detail(id=${cr.getId()})}">Detail</a></td>
+        <td><a th:href="@{/crushes/{id}/update(id=${cr.getId})}">Edit</a></td>
+        <td><a th:href="@{/crushes/{id}/delete(id=${cr.getId()})}">Delete</a></td>
+
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
